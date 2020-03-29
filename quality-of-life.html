@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" name="viewport">
-    <title>Hey</title>
+    <title>Minsk: Quality of Life</title>
 
     <script type="text/javascript" src="static/js/check.js"></script>
     <script src="static/mapbox/mapbox-gl.js"></script>
@@ -126,7 +126,7 @@
     <script>
 
     function colormapByAttribute(attributeName) {
-        return colormap =  ["case",
+        return ["case",
                     ['all',
                                 ['>', ["get", attributeName], 0.0],
                                 ['<', ["get", attributeName], 3.4]
@@ -152,7 +152,7 @@
                                 ['<', ["get", attributeName], 5]
                             ], '#4A8F00',
 
-                    'rgba(102,78,226,0.5)'   // fallback color for all the rest - for now, just make them invisible
+                    'rgba(102,78,226,0)'   // fallback color for all the rest - for now, just make them invisible
                 ];
     }
 
