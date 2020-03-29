@@ -1,16 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport">
     <title>Hey</title>
+
+    <script type="text/javascript" src="static/js/check.js"></script>
+    <script src="static/mapbox/mapbox-gl.js"></script>
+    <link href="static/mapbox/mapbox-gl.css" rel="stylesheet" />
+    <link href="static/css/generic.css" rel="stylesheet" />
+
 </head>
+
 <body>
+    <nav id="side-content">
+        Side content
+        <a href="#" id="side-content-toggle"></a>
+    </nav>
 
-<h1>This is an empty page. Checking Mapbox GL JS</h1>
+    <div id="flyoutMenu">
+        <h2><a href="#">Магазы</a></h2>
+        <h2><a href="#">115.бел</a></h2>
+        <h2><a href="#">Space Syntax</a></h2>
+        <h2><a href="#">Третья ветка</a></h2>
+    </div>
 
-<script type="text/javascript" src="static/js/check.js"></script>
-<script src="static/mapbox/mapbox-gl.js"></script>
-<link href="static/mapbox/mapbox-gl.css" rel="stylesheet" />
+    <button id="roundButton"></button>
 
+    <div id="container">
+        <p>Can you spot the item that doesn't belong?</p>
+        <ul>
+          <li>Lorem</li>
+          <li>Ipsum</li>
+          <li>Dolor</li>
+          <li>Sit</li>
+          <li>Bumblebees</li>
+          <li>Aenean</li>
+          <li>Consectetur</li>
+        </ul>
+    </div>
+
+    <script>
+                ////////////////////////////////////////////////////////////////////////////////////
+                            //  GLOBAL SITE MENU STUFF
+                var flyoutMenu = document.getElementById("flyoutMenu");
+                var menuButton = document.getElementById("roundButton");
+
+                function showMenu(e) {
+                    flyoutMenu.classList.add('show');
+                    document.body.style.overflow = "hidden";
+                    // console.log('showed')
+                }
+
+                function hideMenu(e) {
+                    e.stopPropagation();
+                    flyoutMenu.classList.remove('show');
+                    document.body.style.overflow = "auto";
+                    // console.log('hid')
+                }
+
+                menuButton.addEventListener("click", showMenu, false);
+                flyoutMenu.addEventListener("click", hideMenu, false);
+
+
+                ////////////////////////////////////////////////////////////////////////////////////
+                            //  SIDE CONTENT
+
+                var sideContentToggle = document.getElementById("side-content-toggle");
+                var sideContent = document.getElementById("side-content");
+
+                function sideContentShowHide(e) {
+                    e.preventDefault();
+                    if (sideContent.classList.contains('hidden') === true ) {
+                        sideContent.classList.remove('hidden');
+                    } else {
+                        sideContent.classList.add('hidden')
+                    }
+                }
+
+                sideContentToggle.addEventListener("click", sideContentShowHide, false);
+
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,107 @@
+body {
+            background-color: #EEE;
+            font-family: Helvetica, Arial, sans-serif;
+            padding: 25px;
+            margin: 0;
+            overflow: auto;
+        }
+
+#flyoutMenu {
+        width: 100vw;
+        height: 100vh;
+        background-color: #ffe98b;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate3d(100vw, 0, 0);
+        transition: transform 0.5s cubic-bezier(0, 0.52, 0, 1);
+        overflow: scroll;
+        z-index: 1000;
+    }
+
+#flyoutMenu.show {
+        transform: translate3d(0, 0, 0);
+    }
+
+#flyoutMenu h2 a {
+        color: #55503c;
+        margin-left: 15px;
+        text-decoration: none;
+    }
+
+#flyoutMenu h2 a:hover {
+        text-decoration: underline;
+    }
+
+#container li {
+        margin-bottom: 10px;
+    }
+
+#roundButton {
+        background-color: #96D9FF;
+        margin-bottom: 20px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 10px solid #0065A6;
+        outline: none;
+        transition: transform .3s cubic-bezier(0, .52, 0, 1);
+    }
+
+#roundButton:hover {
+        background-color: #96D9FF;
+        cursor: pointer;
+        border-color: #003557;
+        transform: scale(1.2, 1.2);
+    }
+
+#roundButton:active {
+        border-color: #003557;
+        background-color: #FFF;
+    }
+
+#side-content {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        background-color: cornflowerblue;
+        box-sizing: border-box;
+        padding: 20px;
+        color: #ffffff;
+        /*margin-left: -250px;*/
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.18);
+        transition: margin 0.5s cubic-bezier(0, 0.52, 0, 1);
+    }
+
+#side-content.hidden {
+        margin-left: -250px;
+        transition: margin 0.5s cubic-bezier(0, 0.52, 0, 1);
+
+    }
+
+#side-content-toggle {
+        position: absolute;
+        right: -25px;
+        top: 20px;
+        width: 25px;
+        height: 40px;
+        background-color: cornflowerblue;
+        text-decoration: none;
+        text-align: center;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.18);
+    }
+
+#side-content-toggle:before {
+        content: "\2192";
+        font-weight: 900;
+        color: #dddddd;
+        text-align-all: center;
+    }
