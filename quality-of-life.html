@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport">
+    <title>Hey</title>
+
+    <script type="text/javascript" src="static/js/check.js"></script>
+    <script src="static/mapbox/mapbox-gl.js"></script>
+    <link href="static/mapbox/mapbox-gl.css" rel="stylesheet" />
+    <link href="static/css/generic.css" rel="stylesheet" />
+    <script type="text/javascript" src="static/research/texts.js"></script>
+
+    <style>
+
+        #map-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            order: -1;
+        }
+
+        #map {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="map-wrapper">
+        <div id="map"></div>
+    </div>
+
+    <div id="side-content">
+        <a href="#" id="side-content-toggle"></a>
+        <div id="side-text">
+            <h1>Качество жизни: Google Maps</h1>
+            <h3 id="research-text">
+                EMPTY AT THE MOMENT
+            </h3>
+        </div>
+    </div>
+
+    <div id="flyoutMenu">
+        <h1><a href="#">ПРОЕКТЫ</a></h1>
+            <h2><a href="#">Магазы</a></h2>
+            <h2><a href="#">115.бел</a></h2>
+            <h2><a href="#">Space Syntax</a></h2>
+            <h2><a href="#">Третья ветка</a></h2>
+    </div>
+
+    <button id="roundButton"></button>
+
+<!--    <div id="container">-->
+<!--        <p>Can you spot the item that doesn't belong?</p>-->
+<!--        <ul>-->
+<!--          <li>Lorem</li>-->
+<!--          <li>Ipsum</li>-->
+<!--          <li>Dolor</li>-->
+<!--          <li>Sit</li>-->
+<!--          <li>Bumblebees</li>-->
+<!--          <li>Aenean</li>-->
+<!--          <li>Consectetur</li>-->
+<!--        </ul>-->
+
+<!--    </div>-->
+
+    <script>
+                // display research findings text on the left
+
+                document.getElementById("research-text").innerText = researchTexts.checkText;
+
+                ////////////////////////////////////////////////////////////////////////////////////
+                            //  GLOBAL SITE MENU STUFF
+                var flyoutMenu = document.getElementById("flyoutMenu");
+                var menuButton = document.getElementById("roundButton");
+
+                function showMenu(e) {
+                    flyoutMenu.classList.add('show');
+                    document.body.style.overflow = "hidden";
+                    // console.log('showed')
+                }
+
+                function hideMenu(e) {
+                    e.stopPropagation();
+                    flyoutMenu.classList.remove('show');
+                    document.body.style.overflow = "auto";
+                    // console.log('hid')
+                }
+
+                menuButton.addEventListener("click", showMenu, false);
+                flyoutMenu.addEventListener("click", hideMenu, false);
+
+
+                ////////////////////////////////////////////////////////////////////////////////////
+                            //  SIDE CONTENT
+
+                var sideContentToggle = document.getElementById("side-content-toggle");
+                var sideContent = document.getElementById("side-content");
+
+                function sideContentShowHide(e) {
+                    e.preventDefault();
+                    if (sideContent.classList.contains('hidden') === true ) {
+                        sideContent.classList.remove('hidden');
+                    } else {
+                        sideContent.classList.add('hidden')
+                    }
+                }
+
+                sideContentToggle.addEventListener("click", sideContentShowHide, false);
+
+    </script>
+
+    <!-- HERE GOES THE MAPBOX STUFF -->
+    <script>
+    var ndr = 'cGsuZXlKMUlqb2laWFZuWlc1bGEyRnNhU0lzSW1FaU9pSmphbXB5ZVhnMmFtNHdNSEoxTTNCdloyODVkbUZ1YkRSdkluMC5YTWRvbFNJSU05YkFOcGRvemZ2MGJB';
+    </script>
+
+    <script>
+    mapboxgl.accessToken = atob(ndr);
+    var map = new mapboxgl.Map(
+        {
+            container: 'map',
+            center: [27.56633, 53.90385],
+            zoom: 13.5,
+            style: 'mapbox://styles/eugenekali/ck8859g3106gx1iobjn3g57ju'
+        }
+    );
+
+    map.on('load', function() {
+            map.setPaintProperty("pts-azyu2q", "circle-color",
+        ["interpolate",
+            ["linear"],
+            ["get", "r"],
+                3.254499912261963,
+                "hsl(0, 93%, 23%)",
+                3.55,
+                "hsl(28, 91%, 57%)",
+                3.85,
+                "hsl(50, 100%, 68%)",
+                4.18,
+                "hsl(69, 100%, 47%)",
+                4.5,
+                "hsl(89, 100%, 28%)"
+                    ]);
+        }
+    );
+
+    // map.addControl(new mapboxgl.NavigationControl());
+
+    </script>
+</body>
+
+</html>
