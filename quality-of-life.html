@@ -8,6 +8,7 @@
     <script src="static/mapbox/mapbox-gl.js"></script>
     <link href="static/mapbox/mapbox-gl.css" rel="stylesheet" />
     <link href="static/css/generic.css" rel="stylesheet" />
+    <link href="static/css/sitemenu.css" rel="stylesheet" />
     <script type="text/javascript" src="static/research/texts.js"></script>
     <script type="text/javascript" src="static/layer-styling.js"></script>
 
@@ -64,8 +65,19 @@
             <h2><a href="#">Третья ветка</a></h2>
     </div>
 
-    <button id="roundButton"></button>
+<!--    <button id="roundButton"></button>-->
 
+        <div id="menuToggle">
+
+            <label>
+                <input type="checkbox" />
+            </label>
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
 <!--    <div id="container">-->
 <!--        <p>Can you spot the item that doesn't belong?</p>-->
 <!--        <ul>-->
@@ -87,10 +99,11 @@
 
                 ////////////////////////////////////////////////////////////////////////////////////
                             //  GLOBAL SITE MENU STUFF
-                var flyoutMenu = document.getElementById("flyoutMenu");
-                var menuButton = document.getElementById("roundButton");
+                const flyoutMenu = document.getElementById("flyoutMenu");
+                // var menuButton = document.getElementById("roundButton");
+                const menuButton = document.getElementById("menuToggle");
 
-                function showMenu(e) {
+                function showMenu() {
                     flyoutMenu.classList.add('show');
                     document.body.style.overflow = "hidden";
                     // console.log('showed')
@@ -110,9 +123,9 @@
                 ////////////////////////////////////////////////////////////////////////////////////
                             //  SIDE CONTENT
 
-                var sideContentToggle = document.getElementById("side-content-toggle");
-                var sideContent = document.getElementById("side-content");
-                var mapElement = document.getElementById("map");
+                const sideContentToggle = document.getElementById("side-content-toggle");
+                const sideContent = document.getElementById("side-content");
+                const mapElement = document.getElementById("map");
 
                 function sideContentShowHide(e) {
                     e.preventDefault();
@@ -127,7 +140,7 @@
                         // document.getElementsByClassName('mapboxgl-canvas')[0].style.width = '100%'
 
                         let tmr = 0;
-                        const renderInterval = 1.5; // ms
+                        const renderInterval = 8; // ms
                         window.setInterval( function () {
                             map.resize();
                             tmr += renderInterval;
@@ -148,44 +161,25 @@
 
     <!-- HERE GOES THE MAPBOX STUFF -->
     <script>
-    var ndr = 'cGsuZXlKMUlqb2laWFZuWlc1bGEyRnNhU0lzSW1FaU9pSmphbXB5ZVhnMmFtNHdNSEoxTTNCdloyODVkbUZ1YkRSdkluMC5YTWRvbFNJSU05YkFOcGRvemZ2MGJB';
+        const ndr = 'cGsuZXlKMUlqb2laWFZuWlc1bGEyRnNhU0lzSW1FaU9pSmphbXB5ZVhnMmFtNHdNSEoxTTNCdloyODVkbUZ1YkRSdkluMC5YTWRvbFNJSU05YkFOcGRvemZ2MGJB';
     </script>
 
     <script>
 
+        mapboxgl.accessToken = atob(ndr);
+        const map = new mapboxgl.Map(
+            {
+                container: 'map',
+                center: [27.56633, 53.90385],
+                zoom: 13.5,
+                style: 'mapbox://styles/eugenekali/ck8859g3106gx1iobjn3g57ju'
+            }
+        );
 
-    function isElement(obj) {
-        try {
-            //Using W3 DOM2 (works for FF, Opera and Chrome)
-            return obj instanceof HTMLElement;
-        } catch (e) {
-            //Browsers not supporting W3 DOM2 don't have HTMLElement and
-            //an exception is thrown and we end up here. Testing some
-            //properties that all elements have (works on IE7)
-            return (typeof obj === "object") &&
-                (obj.nodeType === 1) && (typeof obj.style === "object") &&
-                (typeof obj.ownerDocument === "object");
-        }
-    }
-
-
-    var scaleBar;
-
-    mapboxgl.accessToken = atob(ndr);
-    var map = new mapboxgl.Map(
-        {
-            container: 'map',
-            center: [27.56633, 53.90385],
-            zoom: 13.5,
-            style: 'mapbox://styles/eugenekali/ck8859g3106gx1iobjn3g57ju'
-        }
-    );
-
-    map.on('load', function() {
+        map.on('load', function() {
 
             map.addControl(new mapboxgl.ScaleControl(
                 {position: 'bottom-right'}));
-            scaleBar = [];
 
             // while (true) {
             //     console.log('Trying...');
