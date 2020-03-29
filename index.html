@@ -9,35 +9,75 @@
     <link href="static/mapbox/mapbox-gl.css" rel="stylesheet" />
     <link href="static/css/generic.css" rel="stylesheet" />
 
+    <style>
+
+        #map-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            order: -1;
+        }
+
+        #map {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+
 </head>
 
 <body>
-    <nav id="side-content">
-        Side content
+    <div id="map-wrapper">
+        <div id="map"></div>
+    </div>
+
+    <div id="side-content">
         <a href="#" id="side-content-toggle"></a>
-    </nav>
+        <div id="side-text">
+            <h1>Качество жизни: Google Maps</h1>
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br><br>
+
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<br><br>
+                Lorem ipsum end.
+
+                        The tabulated part
+
+                <br><br>End.
+            </h3>
+        </div>
+    </div>
 
     <div id="flyoutMenu">
-        <h2><a href="#">Магазы</a></h2>
-        <h2><a href="#">115.бел</a></h2>
-        <h2><a href="#">Space Syntax</a></h2>
-        <h2><a href="#">Третья ветка</a></h2>
+        <h1><a href="#">ПРОЕКТЫ</a></h1>
+            <h2><a href="#">Магазы</a></h2>
+            <h2><a href="#">115.бел</a></h2>
+            <h2><a href="#">Space Syntax</a></h2>
+            <h2><a href="#">Третья ветка</a></h2>
     </div>
 
     <button id="roundButton"></button>
 
-    <div id="container">
-        <p>Can you spot the item that doesn't belong?</p>
-        <ul>
-          <li>Lorem</li>
-          <li>Ipsum</li>
-          <li>Dolor</li>
-          <li>Sit</li>
-          <li>Bumblebees</li>
-          <li>Aenean</li>
-          <li>Consectetur</li>
-        </ul>
-    </div>
+<!--    <div id="container">-->
+<!--        <p>Can you spot the item that doesn't belong?</p>-->
+<!--        <ul>-->
+<!--          <li>Lorem</li>-->
+<!--          <li>Ipsum</li>-->
+<!--          <li>Dolor</li>-->
+<!--          <li>Sit</li>-->
+<!--          <li>Bumblebees</li>-->
+<!--          <li>Aenean</li>-->
+<!--          <li>Consectetur</li>-->
+<!--        </ul>-->
+
+<!--    </div>-->
 
     <script>
                 ////////////////////////////////////////////////////////////////////////////////////
@@ -78,6 +118,45 @@
                 }
 
                 sideContentToggle.addEventListener("click", sideContentShowHide, false);
+
+    </script>
+
+    <!-- HERE GOES THE MAPBOX STUFF -->
+    <script>
+    var ndr = 'cGsuZXlKMUlqb2laWFZuWlc1bGEyRnNhU0lzSW1FaU9pSmphbXB5ZVhnMmFtNHdNSEoxTTNCdloyODVkbUZ1YkRSdkluMC5YTWRvbFNJSU05YkFOcGRvemZ2MGJB';
+    </script>
+
+    <script>
+    mapboxgl.accessToken = atob(ndr);
+    var map = new mapboxgl.Map(
+        {
+            container: 'map',
+            center: [27.56633, 53.90385],
+            zoom: 13.5,
+            style: 'mapbox://styles/eugenekali/ck8859g3106gx1iobjn3g57ju'
+        }
+    );
+
+    map.on('load', function() {
+            map.setPaintProperty("pts-azyu2q", "circle-color",
+        ["interpolate",
+            ["linear"],
+            ["get", "r"],
+                3.254499912261963,
+                "hsl(0, 93%, 23%)",
+                3.55,
+                "hsl(28, 91%, 57%)",
+                3.85,
+                "hsl(50, 100%, 68%)",
+                4.18,
+                "hsl(69, 100%, 47%)",
+                4.5,
+                "hsl(89, 100%, 28%)"
+                    ]);
+        }
+    );
+
+    // map.addControl(new mapboxgl.NavigationControl());
 
     </script>
 </body>

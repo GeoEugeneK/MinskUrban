@@ -7,6 +7,7 @@ body {
         }
 
 #flyoutMenu {
+        font-family: "Noto Sans", sans-serif;
         width: 100vw;
         height: 100vh;
         background-color: #ffe98b;
@@ -17,15 +18,23 @@ body {
         transition: transform 0.5s cubic-bezier(0, 0.52, 0, 1);
         overflow: scroll;
         z-index: 1000;
+        order: 5;
     }
 
 #flyoutMenu.show {
         transform: translate3d(0, 0, 0);
     }
 
+#flyoutMenu h1 a {
+        font-size: 36px;
+        color: #55503c;
+        margin-left: 40px;
+        text-decoration: none;
+    }
+
 #flyoutMenu h2 a {
         color: #55503c;
-        margin-left: 15px;
+        margin-left: 40px;
         text-decoration: none;
     }
 
@@ -69,7 +78,7 @@ body {
         top: 0;
         height: 100%;
         width: 100%;
-        max-width: 250px;
+        max-width: 33%;
         background-color: cornflowerblue;
         box-sizing: border-box;
         padding: 20px;
@@ -77,10 +86,11 @@ body {
         /*margin-left: -250px;*/
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.18);
         transition: margin 0.5s cubic-bezier(0, 0.52, 0, 1);
+        order: 3;
     }
 
 #side-content.hidden {
-        margin-left: -250px;
+        margin-left: -33%;
         transition: margin 0.5s cubic-bezier(0, 0.52, 0, 1);
 
     }
@@ -105,3 +115,20 @@ body {
         color: #dddddd;
         text-align-all: center;
     }
+
+#side-text {
+    position: absolute;
+    padding: 20px;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: normal;
+}
+
+#side-text h1 {
+    padding-right: 25px;
+    font-weight: bold;
+}
+
+#side-text h3 {
+    padding-right: 25px;
+    font-weight: lighter;
+}
