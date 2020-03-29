@@ -20,14 +20,21 @@
             width: 100%;
             height: 100%;
             order: -1;
+            transition: transform 0.1s cubic-bezier(0, 0.52, 0, 1);
         }
 
         #map {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             right: 0;
             width: 100%;
             height: 100%;
+            transition: margin-left 0.5s cubic-bezier(0, 0.52, 0, 1);
+        }
+
+        #map.squeezed {
+            width: 67%;
+            transition: margin-left 0.5s cubic-bezier(0, 0.52, 0, 1);
         }
 
     </style>
@@ -36,7 +43,7 @@
 
 <body>
     <div id="map-wrapper">
-        <div id="map"></div>
+        <div id="map" class="squeezed"></div>
     </div>
 
     <div id="side-content">
@@ -105,6 +112,7 @@
 
                 var sideContentToggle = document.getElementById("side-content-toggle");
                 var sideContent = document.getElementById("side-content");
+                var mapElement = document.getElementById("map");
 
                 function sideContentShowHide(e) {
                     e.preventDefault();
@@ -112,6 +120,25 @@
                         sideContent.classList.remove('hidden');
                     } else {
                         sideContent.classList.add('hidden')
+                    }
+
+                    if (mapElement.classList.contains('squeezed') === true ) {
+                        mapElement.classList.remove('squeezed');
+                        // document.getElementsByClassName('mapboxgl-canvas')[0].style.width = '100%'
+
+                        let tmr = 0;
+                        const renderInterval = 1.5; // ms
+                        window.setInterval( function () {
+                            map.resize();
+                            tmr += renderInterval;
+                            if (tmr > 500) {
+                                window.clearInterval()
+                            }
+                        }, renderInterval);
+
+
+                    } else {
+                        mapElement.classList.add('squeezed');
                     }
                 }
 
@@ -156,7 +183,8 @@
 
     map.on('load', function() {
 
-            map.addControl(new mapboxgl.ScaleControl({position: 'bottom-right'}));
+            map.addControl(new mapboxgl.ScaleControl(
+                {position: 'bottom-right'}));
             scaleBar = [];
 
             // while (true) {
